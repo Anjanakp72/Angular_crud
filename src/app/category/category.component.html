@@ -1,0 +1,6 @@
+<h2>Category List</h2>
+
+<article *ngIf="categoryListData">
+    <div > <span> Category </span> <span> Parent </span> <span> Delete </span></div>
+    <app-listitem (categoryClicked)="removeCategory(category)" *ngFor="let category of categoryListData" [categoryData]="category"> </app-listitem>
+</article>
