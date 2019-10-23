@@ -18,10 +18,10 @@ export class CategoryComponent implements OnInit {
     this.dataService.getCategories().subscribe(res => {
       this.categoryListData = res['body'];  
     });
-    console.log(this.categoryListData);
   }
 
   removeCategory(category: any) {
+    console.log("remove category", category);
     this.dataService.removeCategory(category.id);
     this.getAllCategories();
   }

@@ -12,7 +12,7 @@ export class ListitemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log("cat", this.categoryData);
+    //console.log("cat", this.categoryData);
   }
 
   deleteCat(){
