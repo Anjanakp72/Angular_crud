@@ -4,7 +4,7 @@ import { LoadShoppingAction, ShoppingActionTypes, LoadShoppingSuccessAction, Loa
 
 import { map, mergeMap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { ShoppingService } from 'src/app/services/shopping.service';
+import { ShoppingService } from '../../services/shopping.service';
 
 @Injectable()
 export class ShoppingEffects {

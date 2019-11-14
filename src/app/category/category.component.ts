@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { AppState } from './../store/models/app-state.model';
+import { Store } from '@ngrx/store';
+import { Category} from './../store/models/category.model';
 import { Observable } from 'rxjs';
-//import { DataService } from './data.service';
-import { Category, DataService } from './data.service';
+import { LoadCategoryAction } from '../store/actions/category.actions';
+
 
 @Component({
   selector: 'app-category',
@@ -10,30 +12,20 @@ import { Category, DataService } from './data.service';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
-  //categories$: Observable<Category[]> = this.store.select(state => state.categories);
-  categories$: Observable<any> ;
-  constructor(private dataService: DataService) { }
+categoryList$: Observable<Array<Category>>;
+loading$: Observable<Boolean>;
+error$: Observable<Error>;
+
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-    this.dataService.getData().subscribe(data => {
-      console.log(data);
-      if(data){
-        this.categories$ = data['categories'];
-      }
-      
-    })
+    this.categoryList$ = this.store.select(store => store.data.categorylist);
+    this.loading$ = this.store.select(store => store.data.loading);
+    this.error$ = this.store.select(store => store.data.error);
+
+    this.store.dispatch(new LoadCategoryAction());
   }
 
-  getAllCategories(){
-    // this.dataService.getCategories().subscribe(res => {
-    //   this.categoryListData = res['body'];  
-    // });
-  }
 
-  removeCategory(category: any) {
-    // console.log("remove category", category);
-    // this.dataService.removeCategory(category.id);
-    // this.getAllCategories();
-  }
 
 }

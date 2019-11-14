@@ -11,16 +11,24 @@ import { counterReducer } from './counter.reducer';
 import { MyCounterComponent } from './my-counter/my-counter.component';
 import { ShoppingEffects } from './store/effects/shopping.effects';
 import { ShoppingReducer } from './store/reducers/shopping-reducer';
+import { CategoryComponent } from './category/category.component';
+import { CategoryEffects } from './store/effects/category.effects';
+import { CategoryReducer } from './store/reducers/category.reducer';
+import { SearchComponent } from './search/search.component';
+import { ProductlistComponent } from './productlist/productlist.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
-    MyCounterComponent
+    MyCounterComponent,
+    CategoryComponent,
+    SearchComponent,
+    ProductlistComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule, FormsModule, StoreModule.forRoot({count: counterReducer, shopping: ShoppingReducer}),
-    AppRoutingModule, EffectsModule.forRoot([ShoppingEffects])
+    BrowserModule, HttpClientModule, FormsModule, StoreModule.forRoot({data: CategoryReducer}),
+    AppRoutingModule, EffectsModule.forRoot([CategoryEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

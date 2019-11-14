@@ -1,6 +1,6 @@
-import { ShoppingItem } from './shopping-item.model';
-import { ShoppingState } from '../reducers/shopping-reducer';
+import { DataState } from '../reducers/category.reducer';
 
 export interface AppState {
-    readonly shopping: ShoppingState
-};
+    readonly data: DataState
+}
+

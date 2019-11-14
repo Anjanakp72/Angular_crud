@@ -1,10 +1,19 @@
-<h2>Category List</h2>
-
-<!-- <article *ngIf="categoryListData">
-    <div > <span> Category </span> <span> Parent </span> <span> Delete </span></div>
-    <app-listitem (categoryClicked)="removeCategory(category)" *ngFor="let category of categoryListData" [categoryData]="category"> </app-listitem>
-</article> -->
-
-<div *ngFor="let category of categories$ | async">
-    {{category}}
+<div id="wrapper">
+    <div [class.loading]="(loading$ | async)" id="category-list" *ngIf="!(error$ | async); else errorDiv">        
+        <div id="list">
+            <h2> Category List </h2>
+            <ul *ngIf="(categoryList$ | async); else noCategoryFoundDiv">
+                <li *ngFor="let cat of categoryList$ | async">
+                    <span> {{cat.catName}}</span>
+                </li>
+            </ul>
+            <ng-template #noCategoryFoundDiv>
+                <div> No Categories Found </div>
+            </ng-template>
+        </div>
+    </div>
 </div>
+
+<ng-template #errorDiv>
+    <h2> {{(error$ | async)?.message}} </h2>
+</ng-template>
