@@ -1,1 +1,4 @@
-<p>productlist works!</p>
+<div *ngIf="!(error$ | async);" class="product">
+    <div> <span class="productName"> Product Name </span> <span> Category </span> <span> For </span> <span> Brand </span> <span> Price </span> <span> Action </span> </div>
+    <app-product *ngFor=" let prod of productList$ | async" [product]="prod"></app-product>
+</div>

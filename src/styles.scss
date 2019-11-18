@@ -1,4 +1,88 @@
 /* You can add global styles to this file, and also import other style files */
-body {
-    background-color: #576574;
+html, body {
+  font-family: roboto, Arial, Helvetica, sans-serif;
+  font-size:0.9rem;
+}
+header {
+  display: flex;
+  background-color: white;
+  margin: 0;
+  padding: 5px 5%;
+  color:gray;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+
+  .nav {
+    margin-left:10vw;
   }
+
+  .logo {
+  background-image: url('assets/Cisco_logo.png');
+  width:100px;
+  height: 50px;
+  background-size:cover;      
+  }
+      
+  ul {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    li {
+      display: flex;
+      align-items: center;        
+      flex-direction: column;
+
+      .badge {
+        height: 20px;
+        width: 20px;
+        font-size: 11px;
+        color: white;
+        background-color: #35badb;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        right: -30px;
+        border-radius: 50%;
+      }
+    }
+  }
+
+}
+
+.product {
+    div {
+        display: flex;
+        height:5vh;
+        padding:5px;
+        border-bottom: 1px solid;
+        width:60vw;
+    }
+    span { margin: 1px 5px; 
+          text-transform: capitalize;
+          width:8vw; 
+      }
+    .productName { width:12vw !important;}
+    button { font-size: 0.8em;
+              width:8vw;
+  }
+}
+
+.searchPanel {
+  border:2px solid #cccccc;
+  border-radius: 10px;
+  width:60vw;
+  margin:2vh 0;
+  padding:5px;
+  
+  h3, p {
+    margin-left:1vw;
+  }
+  button {
+    font-weight:bold;
+    padding:5px;
+    border-radius: 5px;
+  }
+}

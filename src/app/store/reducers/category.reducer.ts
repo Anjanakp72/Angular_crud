@@ -10,6 +10,8 @@ export interface DataState {
     productslist: Products[],
     filters:IsearchFilters,
     filterProducts:Products[],
+    cart: Products[];    
+    total:number;
     loading: boolean,
     error: Error
 }
@@ -20,6 +22,8 @@ const initialState: DataState = {
     productslist: [],
     filters:{catName:"", groupName: ""},
     filterProducts:[],
+    cart: [],
+    total:0,
     loading: false,
     error: undefined
 } 
@@ -43,7 +47,22 @@ export function CategoryReducer(state: DataState = initialState, action: Categor
                 error:action.payload,
                 loading: false
             };
-        case CategoryActionTypes.LOAD_GROUP:
+        case CategoryActionTypes.ADD_TO_CART:            
+            return {
+                ...state,
+                cart: [...state.cart, action.payload],
+                total: state.total + Number(action.payload.price),
+                loading: false
+            }
+            case CategoryActionTypes.REMOVE_FROM_CART:
+                    
+                return {
+                    ...state,
+                    cart: [...state.cart.filter(item => item !== action.payload)],  
+                    total: state.total - Number(action.payload.price),                                  
+                    loading: false
+                };    
+            case CategoryActionTypes.LOAD_GROUP:
                 return {
                 ...state,
                 loading:true

@@ -3,7 +3,6 @@ import { Category } from '../models/category.model';
 import { Groups } from '../models/groups.model';
 import { Products } from '../models/products.model';
 import { IsearchFilters } from '../models/search.filters.model'; 
-import { ISize } from 'selenium-webdriver';
 
 export enum CategoryActionTypes {
     LOAD_CATEGORY = '[CATEGORY] Load Category',
@@ -15,7 +14,9 @@ export enum CategoryActionTypes {
     LOAD_PRODUCT = '[CATEGORY] Load Products',
     LOAD_PRODUCT_SUCCESS = '[CATEGORY] Load Products Success',
     LOAD_PRODUCT_FAILURE = '[CATEGORY] Load Products Failure',
-    SEARCH_FILTER = '[CATEGORY] Search Filter'
+    SEARCH_FILTER = '[CATEGORY] Search Filter',
+    ADD_TO_CART = '[CATEGORY] Add to Cart',
+    REMOVE_FROM_CART = '[CATEGORY] Remove from Cart'
 }
 
 export class LoadCategoryAction implements Action {
@@ -72,4 +73,18 @@ export class SearchFilterAction implements Action {
     constructor(public payload: IsearchFilters){}
 }
 
-export type CategoryAction = LoadCategoryAction | LoadCategorySuccessAction | LoadCategoryFailureAction | LoadGroupAction | LoadGroupSuccessAction | LoadGroupsFailureAction | LoadProductAction | LoadProductSuccessAction | LoadProductFailureAction | SearchFilterAction ;
+export class AddToCartAction implements Action {
+
+    readonly type = CategoryActionTypes.ADD_TO_CART;
+
+    constructor(public payload: Products){}
+}
+
+export class RemoveFromCartAction implements Action {
+
+    readonly type = CategoryActionTypes.REMOVE_FROM_CART;
+
+    constructor(public payload: Products){}
+}
+
+export type CategoryAction = LoadCategoryAction | LoadCategorySuccessAction | LoadCategoryFailureAction | LoadGroupAction | LoadGroupSuccessAction | LoadGroupsFailureAction | LoadProductAction | LoadProductSuccessAction | LoadProductFailureAction | SearchFilterAction | AddToCartAction | RemoveFromCartAction ;

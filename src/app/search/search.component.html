@@ -1,45 +1,34 @@
-<div id="wrapper">
+<app-header></app-header>
+<div id="wrapper" class="product searchPanel">
     <form (ngSubmit)="filterProducts()">
             <!-- [class.loading]="(loading$ | async)" *ngIf="!(error$ | async);" -->
-        <div id="category-list" [class.loading]="(loading$ | async)" *ngIf="!(error$ | async);">        
-            <span id="list">
+        <span id="category-list" [class.loading]="(loading$ | async)" *ngIf="!(error$ | async);">        
+
                 <label> Category List </label>
                 <select [(ngModel)]="model.catName" name="catName">
+                <option value=""> Select All</option>
                 <ng-container *ngIf="(categoryList$ | async)">
                         <option *ngFor="let cat of categoryList$ | async" [value]="cat.catName">
                              {{cat.catName}}
                         </option> 
                 </ng-container>                                               
                 </select>
-            </span>
 
-        </div>
-        <div id="group-list" *ngIf="!(error$ | async);">        
-                <span id="list">
+
+            </span>
+        <span id="group-list" *ngIf="!(error$ | async);">        
+              
                     <label> Group List </label>
                     <select [(ngModel)]="model.groupName" name="groupName">
+                    <option value=""> Select All</option>
                     <ng-container *ngIf="(groupList$ | async)">
                         <option *ngFor="let grp of groupList$ | async" [value]="grp.groupName">
                              {{grp.groupName}}
                         </option>
                     </ng-container>
-                </select>
-                </span>
-                
-            </div>
-        <div> <button type="submit" name="submit"> Search </button> </div>
-        <div *ngIf="!(error$ | async);">
-            <div  *ngIf="(productList$ | async)">
-                <p *ngFor="let prd of productList$ | async">
-                    <span> {{prd.productName}}</span>
-                    <span> {{prd.groupName}}</span>
-                    <span> {{prd.catName}}</span>
-                    <span> {{prd.sizeName}}</span>
-                    <span> {{prd.description}}</span>
-                    <span> {{prd.price}}</span>
-                    <span> {{prd.tax}}</span>
-                </p>
-            </div>
-        </div>
+                </select>                              
+            </span>
+        <span> <button type="submit" name="submit"> Search </button> </span>
     </form>
     </div>    
+    <app-productlist ></app-productlist>    

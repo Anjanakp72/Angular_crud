@@ -1,0 +1,8 @@
+<section>
+    <div>
+    <span class="productName">  {{product.productName}} </span> <span>{{product.catName}}</span> <span>{{product.groupName}}</span> <span>{{product.brandName}}</span> <span> {{product.price}} </span> 
+    <span> <button (click)="addToCart(product)" *ngIf="!inCart"> Add To Cart</button>
+        <button (click)="removeFromCart(product)" *ngIf="inCart"> Remove </button>
+        </span>
+    </div>
+</section>

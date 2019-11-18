@@ -34,14 +34,14 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.categoryList$ = this.store.select(store => store.data.categorylist);
     this.groupList$ = this.store.select(store => store.data.groupslist);
-    this.productList$ = this.store.select(store => store.data.filterProducts);
+    //this.productList$ = this.store.select(store => store.data.filterProducts);
     this.loading$ = this.store.select(store => store.data.loading);
     this.error$ = this.store.select(store => store.data.error);
     
 
    this.store.dispatch(new LoadCategoryAction());
    this.store.dispatch(new LoadGroupAction());
-   this.store.dispatch(new LoadProductAction());
+   //this.store.dispatch(new LoadProductAction());
   }
 
   filterProducts(){

@@ -1,0 +1,11 @@
+<header>
+    <div class="logo"></div>
+    <h1> Shopping Cart </h1>
+    <div class="nav">
+        
+        <ul>
+            <li title="INR {{(cartTotal$ | async) }}"> <span> My Cart : </span> <span class="badge"> {{(cart$ | async)?.length }} </span> </li>                                
+        </ul>
+    </div>
+    
+</header>

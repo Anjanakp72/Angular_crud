@@ -16,6 +16,8 @@ import { CategoryEffects } from './store/effects/category.effects';
 import { CategoryReducer } from './store/reducers/category.reducer';
 import { SearchComponent } from './search/search.component';
 import { ProductlistComponent } from './productlist/productlist.component';
+import { HeaderComponent } from './header/header.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { ProductlistComponent } from './productlist/productlist.component';
     MyCounterComponent,
     CategoryComponent,
     SearchComponent,
-    ProductlistComponent
+    ProductlistComponent,
+    HeaderComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, FormsModule, StoreModule.forRoot({data: CategoryReducer}),
