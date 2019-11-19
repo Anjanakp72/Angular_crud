@@ -16,6 +16,7 @@ export class ProductlistComponent implements OnInit {
   productList$: Observable<Array<Products>>;
   loading$: Observable<Boolean>;
   error$: Observable<Error>;
+  cart$: Observable<Array<Products>>;
 
   constructor(private store: Store<AppState>) { }
 
@@ -23,7 +24,7 @@ export class ProductlistComponent implements OnInit {
     this.productList$ = this.store.select(store => store.data.filterProducts);
     this.loading$ = this.store.select(store => store.data.loading);
     this.error$ = this.store.select(store => store.data.error);
-
+    this.cart$ = this.store.select(store => store.data.cart);
     this.store.dispatch(new LoadProductAction());
   }
 

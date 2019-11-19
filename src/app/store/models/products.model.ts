@@ -7,4 +7,5 @@ export class Products {
     description: string;
     price : number;
     tax: number;
+    inCart:boolean;
 }

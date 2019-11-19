@@ -29,12 +29,12 @@ export class SearchComponent implements OnInit {
   groupList$: Observable<Array<Groups>>;
   productList$: Observable<Array<Products>>;
 
+
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
     this.categoryList$ = this.store.select(store => store.data.categorylist);
     this.groupList$ = this.store.select(store => store.data.groupslist);
-    //this.productList$ = this.store.select(store => store.data.filterProducts);
     this.loading$ = this.store.select(store => store.data.loading);
     this.error$ = this.store.select(store => store.data.error);
     

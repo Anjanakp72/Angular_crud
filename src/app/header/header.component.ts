@@ -14,8 +14,8 @@ export class HeaderComponent implements OnInit {
   cart$: Observable<Array<Products>>;
   productList$: Observable<Array<Products>>;
   searchFilters: IsearchFilters;
-
   cartTotal$: Observable<number>;
+  
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
